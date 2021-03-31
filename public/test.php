@@ -1,6 +1,0 @@
-<?php 
-/**
- * 
- * @param integer   $channelId
- * 
- */
