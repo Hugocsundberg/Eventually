@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 
-Route::get('/home', [LoginController::class, 'index']);
+Route::get('/welcome', function () {
+    return view('welcome');
+})->middleware('auth');
+
+Route::post('/login', [LoginController::class, 'checkLogin']);
