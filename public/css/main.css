@@ -26,3 +26,40 @@ body {
   border-radius: 10px;
   background: white;
 }
+
+.error-p {
+  /* color: red; */
+  margin: 0;
+  height: fit-content;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: error 10s both;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translate(-50%);
+  background: red;
+  color: white;
+  border-radius: 0.25rem;
+  height: 2.38rem;
+  width: 18.5rem;
+  padding: 0 1rem;
+}
+
+@keyframes error {
+  0% {
+    transform: translate(-50%, -6rem);
+  }
+  10%,
+  90% {
+    transform: translate(-50%, -0rem);
+  }
+  100% {
+    transform: translate(-50%, -6rem);
+    display: none;
+  }
+}
