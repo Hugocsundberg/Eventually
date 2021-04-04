@@ -1,7 +1,6 @@
 <x-app>
     <div class="container center-center-col">
         <div class="center-container center-center-col">
-            @include('errors')
             <p>Hello, this is register</p>
             <form class="center-center-col" method="post" action="/register">
                 @csrf

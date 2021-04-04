@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    @include('errors')
     {{ $slot }}
 </body>
 

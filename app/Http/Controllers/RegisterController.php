@@ -10,6 +10,7 @@ class RegisterController extends Controller
 {
     function register(Request $request)
     {
+        $request->validate(['email' => 'unique:users,email']);
         $input = $request->only('email', 'password', 'name');
         $user = new \App\Models\User();
         $user->password = Hash::make($input['password']);
