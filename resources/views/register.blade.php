@@ -2,17 +2,29 @@
     <div class="container center-center-col">
         <div class="center-container center-center-col">
             <p>Hello, this is register</p>
-            <form class="center-center-col" method="post" action="/register">
+            <form class="" method="post" action="/register">
                 @csrf
-                <Label for="email">Email</Label>
-                <input id="email" name="email" type="email">
-                <Label for="password">Password</Label>
-                <input id="password" name="password" type="password">
-                <Label for="name">Name</Label>
-                <input id="name" name="name" type="name">
-                <input id="password" type="submit" value="Register">
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" id="email" name="email" type="email">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Name</label>
+                    <input class="form-control" id="name" name="name" type="name">
+                </div>
+                <!-- <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="/login">Login</a>
+            <p class="mt-4">Already have an account?</p>
+            <a class="btn btn-secondary" href="/login">Login</a>
         </div>
     </div>
 </x-app>
