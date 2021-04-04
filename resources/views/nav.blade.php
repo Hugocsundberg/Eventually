@@ -3,7 +3,7 @@
     <div class="right">
         <div class="nav-item-list ">
             <a class="nav-link" href="/welcome">Home</a>
-            <a class="nav-link" href="/welcome">Logout</a>
+            <a class="nav-link" href="/logout">Logout</a>
         </div>
     </div>
 </nav>
