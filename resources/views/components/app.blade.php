@@ -12,6 +12,7 @@
 
 <body>
     @include('errors')
+    @include('nav')
     {{ $slot }}
 </body>
 
