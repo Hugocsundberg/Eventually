@@ -9,6 +9,8 @@
                 <input id="email" name="email" type="email">
                 <Label for="password">Password</Label>
                 <input id="password" name="password" type="password">
+                <Label for="name">Name</Label>
+                <input id="name" name="name" type="name">
                 <input id="password" type="submit" value="Register">
             </form>
             <a href="/login">Login</a>
