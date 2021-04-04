@@ -8,7 +8,7 @@ use  Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    function register(Request $request)
+    public function register(Request $request)
     {
         $request->validate(['email' => 'unique:users,email']);
         $input = $request->only('email', 'password', 'name');
