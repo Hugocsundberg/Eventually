@@ -3,6 +3,8 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CreateEventController;
+use App\Models\Events;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,3 +47,9 @@ Route::get('/welcome', function () {
 Route::get('/create-event', function () {
     return view('create-event', ['user' => Auth::user()]);
 })->middleware('auth');
+
+Route::post('/event', [CreateEventController::class, 'createEvent']);
+
+Route::get('/event/{event_id}', function (Events $event_id) {
+    return view('event');
+});
