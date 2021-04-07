@@ -45,3 +45,7 @@ Route::get('/welcome', function () {
 Route::get('/create-event', function () {
     return view('create-event', ['user' => Auth::user()]);
 })->middleware('auth');
+
+Route::get('/event-page/', function () {
+    return view('event', ['user' => Auth::user()]);
+});
