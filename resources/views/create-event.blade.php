@@ -25,8 +25,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="event_discription">Description</label>
-                    <textarea class="form-control" id="event_description" name="event_description" placeholder="We will do fun stuff...">
-                    </textarea>
+                    <textarea class="form-control" id="event_description" name="event_description" placeholder="We will do fun stuff..."></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
