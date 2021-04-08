@@ -1,3 +1,20 @@
+<?php 
+
+$timePos = strrpos($event->event_date, 'T');
+$time = substr($event->event_date, $timePos);
+$date = str_replace($time, '', $event->event_date);
+$time = str_replace('T', '', $time);
+
+// ----------------- [ examples ] ///////////////------------------ 
+
+$event->event_date; // prints entire date pluss time (0 spaces)
+$time; // prints only time (24h)
+$date // prints only date of event (yyyy-mm-dd)
+
+// ----------------------------------------------------------------
+
+?>
+
 <x-app>
     @section('title', $event->event_name)
     <div class="center">
