@@ -16,7 +16,7 @@ $date // prints only date of event (yyyy-mm-dd)
 ?>
 
 <x-app>
-    @section('title', $event->event_name);
+    @section('title', $event->event_name)
     <div class="center">
         <div class="max-width">
             <section class="event_top-section  center-center-col">
