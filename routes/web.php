@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CreateEventController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Events;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -19,17 +20,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
-
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('auth');
+Route::get('/', [DashboardController::class, 'getEvents'])->middleware(('auth'));
 
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
 Route::post('/login', [LoginController::class, 'checkLogin']);
+
+
 
 Route::get('/register', function () {
     return view('register');
