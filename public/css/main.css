@@ -95,6 +95,7 @@ nav {
 section.event_top-section {
   position: relative;
   min-height: 15rem;
+  width: 100vw;
 }
 
 .center {
@@ -129,4 +130,5 @@ section.event_top-section {
   border-radius: 10px;
   background: white;
   margin: 2rem;
+  width: calc(100% - 4rem);
 }
