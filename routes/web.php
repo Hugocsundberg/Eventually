@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/', function () {
+Route::get('/{event_data}', function (Events $event_data) {
     return view('dashboard');
 })->middleware('auth');
 
