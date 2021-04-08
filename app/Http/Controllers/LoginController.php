@@ -7,11 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-        return view('login');
-    }
-
     public function checkLogin(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -19,7 +14,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/welcome');
+            return redirect()->intended('/dashboard');
         }
 
         return back()->withErrors([
