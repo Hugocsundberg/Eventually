@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    function getEvents()
+    public function getEvents()
     {
         $user = Auth::user();
         $events = DB::table('events')->get()->where('event_host', '=', $user->id);
