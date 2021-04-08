@@ -51,9 +51,5 @@ Route::get('/create-event', function () {
 Route::post('/event', [CreateEventController::class, 'createEvent']);
 
 Route::get('/event-page/{event_id}', function (Events $event_id) {
-    return view('event');
-});
-
-Route::get('/event-page/', function () {
-    return view('event', ['user' => Auth::user()]);
+    return view('event', ['event' => $event_id]);
 });
