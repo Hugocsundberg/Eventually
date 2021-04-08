@@ -95,7 +95,7 @@ nav {
 section.event_top-section {
   position: relative;
   min-height: 15rem;
-  width: 100vw;
+  width: 100%;
 }
 
 .center {
@@ -131,4 +131,11 @@ section.event_top-section {
   background: white;
   margin: 2rem;
   width: calc(100% - 4rem);
+}
+
+@media screen and (min-width:900px){
+  .max-width{
+    width: 100%;
+    max-width: 70%;
+  }
 }
