@@ -8,7 +8,6 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Events;
 
-
 class RoutesTest extends TestCase
 {
     /**

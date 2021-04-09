@@ -33,7 +33,7 @@ class EventsFactory extends Factory
             'updated_at' => $this->faker->dateTimeThisYear(),
         ];
         // return [
-        //    
+        //
         // ];
     }
 }
