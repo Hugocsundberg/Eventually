@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [DashboardController::class, 'getEvents'])->middleware(('auth'));
 
+Route::get('/dashboard', [DashboardController::class, 'getEvents'])->middleware(('auth'));
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
