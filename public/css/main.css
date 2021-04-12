@@ -1,4 +1,6 @@
 body {
+  --delete_red: #C70000;
+  --delete_red_hover: #980000;
   background: rgb(247, 247, 247);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -131,6 +133,16 @@ section.event_top-section {
   background: white;
   margin: 2rem;
   width: calc(100% - 4rem);
+}
+
+#delete_btn {
+  background-color:var(--delete_red);
+  border-color: var(--delete_red);
+}
+
+#delete_btn:hover{
+  background-color:var(--delete_red_hover);
+  border-color: var(--delete_red_hover);
 }
 
 @media screen and (min-width:900px){

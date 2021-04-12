@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class CreateEventController extends Controller
+class EventController extends Controller
 {
     public function createEvent(Request $request)
     {
@@ -20,5 +21,12 @@ class CreateEventController extends Controller
 
 
         return redirect()->intended('/event-page/' . $event->event_id);
+    }
+
+    public function deleteEvent($event_id)
+    {
+
+        DB::table('events')->where('event_id', '=', $event_id)->delete();
+        return redirect()->intended('/dashboard');
     }
 }

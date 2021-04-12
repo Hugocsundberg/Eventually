@@ -36,7 +36,7 @@ $date // prints only date of event (yyyy-mm-dd)
                 </div>
             </section>
             @if ($event->event_host == $user->id)
-
+            <a href='#' class='btn btn-primary' id="delete_btn">DELETE EVENT</a>
             @endif
         </div>
     </div>
