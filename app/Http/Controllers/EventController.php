@@ -27,6 +27,44 @@ class EventController extends Controller
     {
 
         DB::table('events')->where('event_id', '=', $event_id)->delete();
+        DB::table('guestbooks')->where('event_id', '=', $event_id)->delete();
         return redirect()->intended('/dashboard');
+    }
+
+    public function addComment(Request $request)
+    {
+        // die(var_dump("Found add comment!"));
+        $input = $request;
+        $comment = new \App\Models\Comment();
+        $comment->event_id = $input['event'];
+        $comment->message = $input['event_msg'];
+        if (isset($input['host'])) {
+
+            $comment->from_host = $input['host'];
+        } else {
+            $comment->from_host = null;
+        }
+
+        $comment->save();
+
+
+        return redirect('/event-page/' . $input['event']);
+    }
+
+    public function getComments($event_id)
+    {
+        $event_data = DB::table('events')
+            ->where('event_id', '=', $event_id)
+            ->get();
+
+        $comments = DB::table('guestbooks')
+            ->where('event_id', '=', $event_id)
+            ->get();
+
+
+        return view("event", [
+            'event' => $event_data[0],
+            'comments' => $comments
+        ]);
     }
 }

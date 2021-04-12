@@ -51,8 +51,8 @@ Route::get('/create-event', function () {
 
 Route::post('/event', [EventController::class, 'createEvent']);
 
-Route::get('/event-page/{event_data}', function (Events $event_data) {
-    return view('event', ['event' => $event_data]);
-});
+Route::get('/event-page/{event_data}', [EventController::class, 'getComments']);
 
 Route::get('/event-page/{event_data}/delete', [EventController::class, 'deleteEvent']);
+
+Route::post('/add-comment', [EventController::class, 'addComment']);

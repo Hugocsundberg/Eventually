@@ -1,5 +1,5 @@
 <?php 
-
+// die(var_dump($event));
 $timePos = strrpos($event->event_date, 'T');
 $time = substr($event->event_date, $timePos);
 $date = str_replace($time, '', $event->event_date);
@@ -35,7 +35,33 @@ $date // prints only date of event (yyyy-mm-dd)
                     <p class="description ">{{$event->event_description}}</p>
                 </div>
             </section>
-            @if ($event->event_host == $user->id)
+            <section class="mid-section center-center-col">
+                <div class="card-background padding">
+                    <form action='/add-comment' method="post">
+                        @csrf
+                        <input type="hidden" value="{{$event->event_id}}" name="event" id="event">
+                        <textarea name="event_msg" placeholder="type here (don't forget to sign)..."></textarea>
+                        @if (isset($user))
+                        <input type="hidden" name="host" value="{{$user->name}}">
+                        @endif
+                        <br>
+                        <button class='btn btn-primary' type="submit" name="msg_submit">Add comment</button>
+                    </form>
+                </div>
+            </section>
+            
+            {{-- {{ die(var_dump($event)) }} --}}
+            @foreach ($comments as $comment): 
+            <div class="card-background padding">
+                @if($comment->from_host != null)
+                <strong>{{$comment->from_host}}</strong>
+                @endif
+                <p>
+                    "{{$comment->message}}"
+                </p>
+            </div>
+            @endforeach
+            @if (isset($user))
             <a href='#' class='btn btn-primary' id="delete_btn">DELETE EVENT</a>
             @endif
         </div>

@@ -1,4 +1,5 @@
 <x-app>
+    @section('title', 'Register');
     <div class="container center-center-col">
         <div class="center-container center-center-col">
             <p>Hello, this is register</p>

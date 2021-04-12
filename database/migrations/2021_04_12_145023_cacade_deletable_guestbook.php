@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGuestbooks extends Migration
+class CacadeDeletableGuestbook extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,12 @@ class CreateGuestbooks extends Migration
     {
         Schema::create('guestbooks', function (Blueprint $table) {
             $table->id();
-            $table->integer('event_id');
+            $table->integer('event_id')
+                ->constrained('events', 'event_id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('message');
+            $table->string('from_host')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateGuestbooks extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_guestbooks');
+        //
     }
 }
