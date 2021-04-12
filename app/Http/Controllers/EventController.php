@@ -25,7 +25,6 @@ class EventController extends Controller
 
     public function deleteEvent($event_id)
     {
-
         DB::table('events')->where('event_id', '=', $event_id)->delete();
         DB::table('guestbooks')->where('event_id', '=', $event_id)->delete();
         return redirect()->intended('/dashboard');
