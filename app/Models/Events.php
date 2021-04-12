@@ -19,4 +19,9 @@ class Events extends Model
     protected $attributes = [
         'event_key' => null,
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

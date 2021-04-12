@@ -46,7 +46,7 @@ class RoutesTest extends TestCase
         $response = $this->actingAs($user)->get('/dashboard');
 
         $response->assertStatus(200);
-        $response->assertSeeText("your event");
+        $response->assertSeeText("Your event");
     }
 
 
