@@ -4,6 +4,7 @@ $timePos = strrpos($event->event_date, 'T');
 $time = substr($event->event_date, $timePos);
 $date = str_replace($time, '', $event->event_date);
 $time = str_replace('T', '', $time);
+$user = Auth::user();
 
 // ----------------- [ examples ] ///////////////------------------ 
 
@@ -34,6 +35,9 @@ $date // prints only date of event (yyyy-mm-dd)
                     <p class="description ">{{$event->event_description}}</p>
                 </div>
             </section>
+            @if ($event->event_host == $user->id)
+
+            @endif
         </div>
     </div>
 
