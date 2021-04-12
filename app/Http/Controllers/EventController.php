@@ -38,7 +38,6 @@ class EventController extends Controller
         $comment->event_id = $input['event'];
         $comment->message = $input['event_msg'];
         if (isset($input['host'])) {
-
             $comment->from_host = $input['host'];
         } else {
             $comment->from_host = null;
