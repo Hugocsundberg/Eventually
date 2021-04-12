@@ -19,6 +19,6 @@ class CreateEventController extends Controller
         $event->save();
 
 
-        return redirect()->intended('/event-page/{event_id}');
+        return redirect()->intended('/event-page/' . $event->event_id);
     }
 }

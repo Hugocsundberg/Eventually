@@ -1,4 +1,5 @@
 <x-app>
+    @section('title', 'Login')
     <div class="container center-center-col">
         <div class="center-container center-center-col">
             <p>Hello, this is login</p>
