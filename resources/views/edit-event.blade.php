@@ -9,6 +9,9 @@ $user = Auth::user();
 if (isset($user->id) && $user->id === $event->event_host) {
     $host = $user;
 }
+else{
+    die(http_response_code(403));
+}
 
 // ----------------- [ examples ] ///////////////------------------ 
 
