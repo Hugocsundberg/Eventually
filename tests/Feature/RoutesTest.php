@@ -77,4 +77,16 @@ class RoutesTest extends TestCase
 
         $response->assertSeeText("Datum");
     }
+
+    public function test_go_to_editEvent()
+    {
+        $user = User::factory()->create();
+        $event_data = Events::factory()->create();
+        $response = $this->actingAs($user)->get('/event-page/' . $event_data['event_id'] . '/edit-event');
+
+        $response->assertStatus(200);
+
+        $response->assertSeeText('Datum');
+        $response->assertDontSeeText('Comments');
+    }
 }
