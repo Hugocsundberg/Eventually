@@ -113,6 +113,6 @@ class EventController extends Controller
                 'event_description' => $input['event_description']
             ]);
 
-        return redirect('/event-page/' . $input['event_id'] . '/edit-event');
+        return redirect('/event-page/' . $input['event_id']);
     }
 }
