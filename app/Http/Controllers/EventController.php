@@ -66,4 +66,33 @@ class EventController extends Controller
             'comments' => $comments
         ]);
     }
+
+    public function deleteComment($event_id, $comment_id)
+    {
+        DB::table('guestbooks')->where('id', '=', $comment_id)->delete();
+        return redirect()->intended('/event-page/' . $event_id . '/');
+    }
+
+    public function editEvent($event_id)
+    {
+
+        $event = DB::table('events')
+            ->where('event_id', '=', $event_id)
+            ->get();
+
+        $comments = DB::table('guestbooks')
+            ->where('event_id', '=', $event_id)
+            ->get();
+
+        return view("edit-event", [
+            'event' => $event[0],
+            'comments' => $comments
+
+        ]);
+    }
+
+    public function saveChanges(Request $request)
+    {
+        die(var_dump($request['event_name']));
+    }
 }

@@ -5,6 +5,10 @@ $time = substr($event->event_date, $timePos);
 $date = str_replace($time, '', $event->event_date);
 $time = str_replace('T', '', $time);
 $user = Auth::user();
+// die(var_dump($user));
+if(isset($user->id) && $user->id === $event->event_host){
+    $host = $user;
+}
 
 // ----------------- [ examples ] ///////////////------------------ 
 
@@ -31,6 +35,8 @@ $date // prints only date of event (yyyy-mm-dd)
                     <time>{{$date}}</time>
                     <h4>Time:</h4>
                     <time>{{$time}}</time>
+                    <h4>Location:</h4>
+                    <p>{{$event->event_location}}</p>
                     <h4 class="">Beskrivning</h4>
                     <p class="description ">{{$event->event_description}}</p>
                 </div>
@@ -50,19 +56,23 @@ $date // prints only date of event (yyyy-mm-dd)
                 </div>
             </section>
             
-            {{-- {{ die(var_dump($event)) }} --}}
-            @foreach ($comments as $comment): 
-            <div class="card-background padding">
-                @if($comment->from_host != null)
-                <strong>{{$comment->from_host}}</strong>
-                @endif
-                <p>
-                    "{{$comment->message}}"
-                </p>
-            </div>
+            
+            @foreach ($comments as $comment)
+                <div class="card-background padding">
+                    @if($comment->from_host != null)
+                        <strong>{{$comment->from_host}}</strong>
+                    @endif
+                    <p>
+                        "{{$comment->message}}"
+                    </p>
+                    @if (isset($host))
+                        <a href='#' class='btn btn-primary' data-comment="{{$comment->id}}" id="delete_btn">DELETE COMMENT</a>
+                    @endif
+                </div>
             @endforeach
-            @if (isset($user))
-            <a href='#' class='btn btn-primary' id="delete_btn">DELETE EVENT</a>
+            @if (isset($host))
+                <a href='/event-page/{{$event->event_id}}/edit-event' class='btn btn-primary'>Edit Event</a>
+                <a href='#' class='btn btn-primary' id="delete_btn">DELETE EVENT</a>
             @endif
         </div>
     </div>

@@ -55,4 +55,12 @@ Route::get('/event-page/{event_data}', [EventController::class, 'getComments']);
 
 Route::get('/event-page/{event_data}/delete', [EventController::class, 'deleteEvent']);
 
+Route::get('/event-page/{event_data}/delete-comment/{comment_id}', [EventController::class, 'deleteComment']);
+
 Route::post('/add-comment', [EventController::class, 'addComment']);
+
+Route::get('/event-page/{event_data}/edit-event', [EventController::class, 'editEvent'])
+    ->middleware('auth');
+
+Route::post('/event-page/{event_data}/edit-event', [EventController::class, 'saveChanges'])
+    ->middleware('auth');
