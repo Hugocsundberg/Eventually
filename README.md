@@ -1,3 +1,28 @@
+<h1><b>Code reiew</b></h1>
+
+<ul>
+  <li>Fancy pantsy javascrip on inlog fail!!!!! ‘The email has already been taken’</li>
+  <li>If I register a user and don’t put in a password I can still register a user, use require in registercontroller</li>
+  <li>You are able to write a letter in date
+</li>
+  <li>You are able to write a letter in time </li>
+  <li>Nice site! Good job</li>
+  <li>Delete comments 35 event controller</li>
+  <li>Delete comments 17-20 create-event.blade</li>
+  <li>Login.blade line 17-20 comments</li>
+  <li>Register.blade line 21-24 COMMENTS!!1</li>
+  <li>37 edit-event: you could store this image locally instead <img src="{{asset('/images/pizza1.png')}}"</li>
+  <li>Nice structure of code</li>
+  <li>Nice logic to determine which comment comes from the host in event controller </li>
+  <li>Its not a big big deal but personally I believe its better to have two clear spaces between the closing bracket and the new method, it creates more air and is much easier to read while I’m doing a code review like this</li>
+  <li>Sweet idea!</li>
+  <li>ON LINE 84 IN EVENT CONTROLLER, YOU ONLY HAVE ONE LINE BREAK, WHILE IN THE REST OF THE STRUCTURE OF YOUR CODE YOU HAVE TWO</li>
+  <li>LINE 25-27 COMMENTS! IN LOGINCONTROLLER</li>
+  <li>CLEAN CODE IN LOG OUT CONTROLLER, GOOD JOB!</li>
+  <li>YOU COULD USE MINIMUM LENGTH OF PASSWORD</li>
+  <li>Really nice and clean application!</li>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -62,3 +87,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 Test
+
