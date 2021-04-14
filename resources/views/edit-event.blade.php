@@ -26,7 +26,13 @@ $date // prints only date of event (yyyy-mm-dd)
         <div class="max-width">
             <form class="event_edit" action='/event-page/{{$event->event_id}}/edit-event' method='post'>
                 @csrf
+
                 <input type="hidden" id="event_name" name="event_name"/>
+                <input type="hidden" id="event_location" name="event_location"/>
+                <input type="hidden" id="event_date" name="event_date"/>
+                <input type="hidden" id="event_description" name="event_description"/>
+                <input type="hidden" id="event_id" name="event_id" value="{{$event->event_id}}">
+
                 <section class="event_top-section  center-center-col">
                     <img src="https://media.routard.com/image/67/1/fb-canada-parcs.1473671.jpg" alt="">
                     <time class="date text-white">{{$date}}</time>
@@ -36,13 +42,13 @@ $date // prints only date of event (yyyy-mm-dd)
                 <section class="mid-section center-center-col">
                     <div class="card-background padding">
                         <h4 class="">Datum:</h4>
-                        <time id="date">{{$date}}</time>
+                        <time contenteditable="true" id="date">{{$date}}</time>
                         <h4>Time:</h4>
-                        <time id="time">{{$time}}</time>
+                        <time contenteditable="true" id="time">{{$time}}</time>
                         <h4>Location:</h4>
-                        <p id="location">{{$event->event_location}}</p>
+                        <p contenteditable="true" id="location">{{$event->event_location}}</p>
                         <h4>Beskrivning</h4>
-                        <p class="description ">{{$event->event_description}}</p>
+                        <p contenteditable="true" class="description ">{{$event->event_description}}</p>
                     </div>
                 </section>
                 
