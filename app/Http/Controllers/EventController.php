@@ -74,7 +74,6 @@ class EventController extends Controller
 
     public function editEvent($event_id)
     {
-
         $event = DB::table('events')
             ->where('event_id', '=', $event_id)
             ->get();
