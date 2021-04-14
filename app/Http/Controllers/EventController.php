@@ -74,7 +74,6 @@ class EventController extends Controller
 
     public function editEvent($event_id)
     {
-
         $event = DB::table('events')
             ->where('event_id', '=', $event_id)
             ->get();
@@ -92,6 +91,28 @@ class EventController extends Controller
 
     public function saveChanges(Request $request)
     {
-        dd($request);
+        $input = $request->only(
+            'event_name',
+            'event_location',
+            'event_date',
+            'event_description',
+            'event_id'
+        );
+
+        foreach ($input as $data) {
+            $data = trim(filter_var($data, FILTER_SANITIZE_STRING));
+        }
+
+
+        DB::table('events')
+            ->where('event_id', $input['event_id'])
+            ->update([
+                'event_name' => $input['event_name'],
+                'event_location' => $input['event_location'],
+                'event_date' => $input['event_date'],
+                'event_description' => $input['event_description']
+            ]);
+
+        return redirect('/event-page/' . $input['event_id'] . '/edit-event');
     }
 }
