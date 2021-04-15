@@ -76,7 +76,6 @@ class EventController extends Controller
 
     public function editEvent($event_id)
     {
-
         $event = Events::select()
             ->where('event_id', '=', $event_id)
             ->get();
@@ -87,7 +86,6 @@ class EventController extends Controller
 
 
         if (Auth::user()->id !== (int)$event[0]->event_host) {
-
             return new Response(
                 "<h1 style='margin-top:50vh;text-align:center;'>ACCESS DENIED</h1>",
                 403
