@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,6 @@ class EventController extends Controller
 
     public function addComment(Request $request)
     {
-        // die(var_dump("Found add comment!"));
         $input = $request;
         $comment = new \App\Models\Comment();
         $comment->event_id = $input['event'];
@@ -74,6 +74,7 @@ class EventController extends Controller
 
     public function editEvent($event_id)
     {
+
         $event = DB::table('events')
             ->where('event_id', '=', $event_id)
             ->get();
@@ -81,7 +82,13 @@ class EventController extends Controller
         $comments = DB::table('guestbooks')
             ->where('event_id', '=', $event_id)
             ->get();
-
+        dd("Controller ID", gettype(Auth::user()->id), "Controller Host", gettype($event[0]->event_host));
+        if (Auth::user()->id !== $event[0]->event_host) {
+            return new Response(
+                "<h1 style='margin-top:50vh;text-align:center;'>ACCESS DENIED</h1>",
+                403
+            );
+        }
         return view("edit-event", [
             'event' => $event[0],
             'comments' => $comments

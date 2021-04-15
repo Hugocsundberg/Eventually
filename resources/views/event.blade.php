@@ -8,7 +8,6 @@ $time = substr($event->event_date, $timePos);
 $date = str_replace($time, '', $event->event_date);
 $time = str_replace('T', '', $time);
 $user = Auth::user();
-// die(var_dump($user));
 if (isset($user->id) && $user->id === $event->event_host) {
     $host = $user;
 }
@@ -80,5 +79,5 @@ $date // prints only date of event (yyyy-mm-dd)
             @endif
         </div>
     </div>
-
+    <script src='../../js/deleteBtn.js'></script>
 </x-app>

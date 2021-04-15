@@ -14,7 +14,6 @@
     @include('errors')
     @include('nav')
     {{ $slot }}
-    <script src='/js/deleteBtn.js'></script>
 </body>
 
 </html>

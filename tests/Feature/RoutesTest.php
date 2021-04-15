@@ -80,8 +80,12 @@ class RoutesTest extends TestCase
 
     public function test_go_to_editEvent()
     {
-        $user = User::factory()->create();
+
         $event_data = Events::factory()->create();
+        $user = User::factory()->create([
+            'id' => $event_data->event_host,
+        ]);
+        dump($user->id, $event_data->event_host);
         $response = $this->actingAs($user)->get('/event-page/' . $event_data['event_id'] . '/edit-event');
 
         $response->assertStatus(200);
