@@ -80,7 +80,6 @@ class RoutesTest extends TestCase
 
     public function test_go_to_editEvent()
     {
-
         $event_data = Events::factory()->create();
         $user = User::factory()->create([
             'id' => $event_data->event_host,
