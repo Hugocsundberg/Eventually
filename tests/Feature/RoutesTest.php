@@ -85,8 +85,10 @@ class RoutesTest extends TestCase
         $user = User::factory()->create([
             'id' => $event_data->event_host,
         ]);
-        dump($user->id, $event_data->event_host);
-        $response = $this->actingAs($user)->get('/event-page/' . $event_data['event_id'] . '/edit-event');
+        // dump($user->id, gettype($event_data->event_host));
+        $response = $this->actingAs($user)
+
+            ->get('/event-page/' . $event_data->event_id . '/edit-event');
 
         $response->assertStatus(200);
 

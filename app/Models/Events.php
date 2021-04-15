@@ -20,6 +20,10 @@ class Events extends Model
         'event_key' => null,
     ];
 
+    protected $cast = [
+        'event_host' => 'int'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

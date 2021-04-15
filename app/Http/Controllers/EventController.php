@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Events;
+use App\Models\Comment;
 
 class EventController extends Controller
 {
@@ -26,8 +28,8 @@ class EventController extends Controller
 
     public function deleteEvent($event_id)
     {
-        DB::table('events')->where('event_id', '=', $event_id)->delete();
-        DB::table('guestbooks')->where('event_id', '=', $event_id)->delete();
+        Events::select()->where('event_id', '=', $event_id)->delete();
+        Comment::select()->where('event_id', '=', $event_id)->delete();
         return redirect('/dashboard');
     }
 
@@ -51,11 +53,11 @@ class EventController extends Controller
 
     public function getComments($event_id)
     {
-        $event_data = DB::table('events')
+        $event_data = Events::select()
             ->where('event_id', '=', $event_id)
             ->get();
 
-        $comments = DB::table('guestbooks')
+        $comments = Comment::select()
             ->where('event_id', '=', $event_id)
             ->get();
 
@@ -68,22 +70,24 @@ class EventController extends Controller
 
     public function deleteComment($event_id, $comment_id)
     {
-        DB::table('guestbooks')->where('id', '=', $comment_id)->delete();
+        Comment::select()->where('id', '=', $comment_id)->delete();
         return redirect()->intended('/event-page/' . $event_id . '/');
     }
 
     public function editEvent($event_id)
     {
 
-        $event = DB::table('events')
+        $event = Events::select()
             ->where('event_id', '=', $event_id)
             ->get();
 
-        $comments = DB::table('guestbooks')
+        $comments = Comment::select()
             ->where('event_id', '=', $event_id)
             ->get();
-        dd("Controller ID", gettype(Auth::user()->id), "Controller Host", gettype($event[0]->event_host));
-        if (Auth::user()->id !== $event[0]->event_host) {
+
+
+        if (Auth::user()->id !== (int)$event[0]->event_host) {
+
             return new Response(
                 "<h1 style='margin-top:50vh;text-align:center;'>ACCESS DENIED</h1>",
                 403
@@ -111,7 +115,7 @@ class EventController extends Controller
         }
 
 
-        DB::table('events')
+        Events::all()
             ->where('event_id', $input['event_id'])
             ->update([
                 'event_name' => $input['event_name'],

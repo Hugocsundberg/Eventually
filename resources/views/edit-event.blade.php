@@ -1,5 +1,5 @@
 <?php
-// die(var_dump($event));
+
 $timePos = strrpos($event->event_date, 'T');
 $time = substr($event->event_date, $timePos);
 $date = str_replace($time, '', $event->event_date);
